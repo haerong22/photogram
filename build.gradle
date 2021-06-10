@@ -14,7 +14,7 @@ subprojects {
     apply plugin: 'java'
     apply plugin: 'idea'
 
-    group = 'com.example'
+    group = 'com.photogram'
     version = '0.0.1-SNAPSHOT'
 
     sourceCompatibility = '1.8'
@@ -23,6 +23,17 @@ subprojects {
 
     repositories {
         mavenCentral()
+    }
+
+    dependencies {
+        compileOnly 'org.projectlombok:lombok'
+        compileOnly 'org.springframework.boot:spring-boot-starter-data-jpa'
+        compileOnly "org.springframework.boot:spring-boot-configuration-processor"
+        runtimeOnly 'org.mariadb.jdbc:mariadb-java-client'
+        testCompileOnly 'org.springframework.boot:spring-boot-starter-test'
+//        runtimeOnly 'com.h2database:h2'
+
+        testCompileOnly group: 'junit', name: 'junit', version: '4.+'
     }
 }
 
@@ -34,17 +45,7 @@ project(':photogram-core') {
     jar.enabled = true
 
     dependencies {
-        compileOnly 'org.springframework.boot:spring-boot-starter-data-jpa'
-        compileOnly 'org.projectlombok:lombok'
 
-        compileOnly "org.springframework.boot:spring-boot-configuration-processor"
-
-//        runtimeOnly 'com.h2database:h2'
-        runtimeOnly 'org.mariadb.jdbc:mariadb-java-client'
-
-        testCompileOnly 'org.springframework.boot:spring-boot-starter-test'
-
-        testCompileOnly group: 'junit', name: 'junit', version: '4.+'
     }
 
     test {
@@ -59,10 +60,10 @@ project(':photogram-web') {
     dependencies {
         compileOnly project(':photogram-core')
 
-        compileOnly 'org.springframework.boot:spring-boot-starter-oauth2-client'
-        compileOnly 'org.springframework.boot:spring-boot-starter-security'
+//        compileOnly 'org.springframework.boot:spring-boot-starter-oauth2-client'
+//        compileOnly 'org.springframework.boot:spring-boot-starter-security'
         compileOnly 'org.springframework.boot:spring-boot-starter-web'
 
-        testCompileOnly 'org.springframework.security:spring-security-test'
+//        testCompileOnly 'org.springframework.security:spring-security-test'
     }
 }
