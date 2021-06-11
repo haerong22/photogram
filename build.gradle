@@ -62,6 +62,10 @@ project(':photogram-web') {
     dependencies {
         compileOnly project(':photogram-core')
 
+        // thymeleaf
+        compileOnly 'org.springframework.boot:spring-boot-starter-thymeleaf'
+        compileOnly 'nz.net.ultraq.thymeleaf:thymeleaf-layout-dialect'
+
 //        compileOnly 'org.springframework.boot:spring-boot-starter-oauth2-client'
 //        compileOnly 'org.springframework.boot:spring-boot-starter-security'
         compileOnly 'org.springframework.boot:spring-boot-starter-web'
