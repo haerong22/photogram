@@ -1,9 +1,7 @@
 package com.photogram.core.domain.dto.auth;
 
-import lombok.AllArgsConstructor;
-import lombok.Builder;
-import lombok.Data;
-import lombok.NoArgsConstructor;
+import com.photogram.core.domain.entity.user.User;
+import lombok.*;
 
 @Data
 @AllArgsConstructor
@@ -15,4 +13,13 @@ public class ReqSignupDto {
     private String password;
     private String email;
     private String name;
+
+    public User toEntity() {
+        return User.builder()
+                .username(username)
+                .password(password)
+                .email(email)
+                .name(name)
+                .build();
+    }
 }

@@ -1,14 +1,20 @@
 package com.photogram.web.controller;
 
 import com.photogram.core.domain.dto.auth.ReqSignupDto;
+import com.photogram.core.domain.entity.user.User;
+import com.photogram.web.service.AuthService;
+import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 
 @Slf4j
+@RequiredArgsConstructor
 @Controller
 public class AuthController {
+
+    private final AuthService authService;
 
     @GetMapping("/auth/signin")
     public String signinForm() {
@@ -23,6 +29,7 @@ public class AuthController {
     @PostMapping("/auth/signup")
     public String signup(ReqSignupDto reqSignupDto) {
         log.info("ReqSignupDto ==> {}", reqSignupDto);
+        User userEntity = authService.createUser(reqSignupDto);
         return "auth/signin";
     }
 }
