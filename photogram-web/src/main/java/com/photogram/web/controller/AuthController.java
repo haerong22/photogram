@@ -1,9 +1,12 @@
 package com.photogram.web.controller;
 
+import com.photogram.core.domain.dto.auth.ReqSignupDto;
+import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 
+@Slf4j
 @Controller
 public class AuthController {
 
@@ -18,7 +21,8 @@ public class AuthController {
     }
 
     @PostMapping("/auth/signup")
-    public String signup() {
+    public String signup(ReqSignupDto reqSignupDto) {
+        log.info("ReqSignupDto ==> {}", reqSignupDto);
         return "auth/signin";
     }
 }
