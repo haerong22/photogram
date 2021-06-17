@@ -9,6 +9,8 @@ import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 
+import javax.validation.Valid;
+
 @Slf4j
 @RequiredArgsConstructor
 @Controller
@@ -27,7 +29,7 @@ public class AuthController {
     }
 
     @PostMapping("/auth/signup")
-    public String signup(ReqSignupDto reqSignupDto) {
+    public String signup(@Valid ReqSignupDto reqSignupDto) {
         log.info("ReqSignupDto ==> {}", reqSignupDto);
         User userEntity = authService.createUser(reqSignupDto);
         return "auth/signin";
