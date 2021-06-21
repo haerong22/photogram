@@ -14,6 +14,10 @@ function update(userId, event) {
         location.href = `/user/${userId}`
     }).fail(error => {
         console.log("실패", error);
-        alert(JSON.stringify(error.responseJSON.data));
+        if (error.responseJSON.data == null ){
+            alert(error.responseJSON.message);
+        } else {
+            alert(JSON.stringify(error.responseJSON.data));
+        }
     });
 }

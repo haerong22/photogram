@@ -2,6 +2,7 @@ package com.photogram.web.service;
 
 import com.photogram.core.domain.entity.user.User;
 import com.photogram.core.repository.UserRepository;
+import com.photogram.web.exception.ex.CustomValidationApiException;
 import lombok.RequiredArgsConstructor;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Service;
@@ -17,7 +18,7 @@ public class UserService {
     @Transactional
     public User updateUser(long id, User user){
         User userEntity = userRepository.findById(id)
-                .orElseThrow(() -> new RuntimeException("Not found id"));
+                .orElseThrow(() -> new CustomValidationApiException("Not found id"));
         userEntity.setName(user.getName());
         userEntity.setPassword(bCryptPasswordEncoder.encode(user.getPassword()));
         userEntity.setBio(user.getBio());

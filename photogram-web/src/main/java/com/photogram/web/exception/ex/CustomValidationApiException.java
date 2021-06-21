@@ -4,7 +4,11 @@ import org.springframework.validation.BindingResult;
 
 public class CustomValidationApiException extends RuntimeException{
 
-    private final BindingResult bindingResult;
+    private BindingResult bindingResult;
+
+    public CustomValidationApiException(String message) {
+        super(message);
+    }
 
     public CustomValidationApiException(String message, BindingResult bindingResult) {
         super(message);

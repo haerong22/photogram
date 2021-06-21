@@ -37,8 +37,6 @@ public class GlobalExceptionHandler {
                         .build());
     }
 
-
-
     // ========================================================================
     private Map<String, String> getErrors(BindingResult bindingResult) {
         Map<String, String> errors = new HashMap<>();
