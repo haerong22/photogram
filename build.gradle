@@ -65,6 +65,8 @@ project(':photogram-web') {
 
         // thymeleaf
         compileOnly 'org.springframework.boot:spring-boot-starter-thymeleaf'
+        compileOnly 'org.thymeleaf.extras:thymeleaf-extras-springsecurity5'
+
         compileOnly 'nz.net.ultraq.thymeleaf:thymeleaf-layout-dialect'
 
         // log4jdbc
