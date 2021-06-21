@@ -11,6 +11,8 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RestController;
 
+import javax.validation.Valid;
+
 @RequiredArgsConstructor
 @RestController
 public class UserApiController {
@@ -19,7 +21,7 @@ public class UserApiController {
 
     @PutMapping("/api/user/{id}")
     public CommonResponse<?> update(@PathVariable long id,
-                                    ReqUserUpdate reqUserUpdate,
+                                    @Valid ReqUserUpdate reqUserUpdate,
                                     @AuthenticationPrincipal PrincipalDetails principalDetails) {
         User userEntity = userService.updateUser(id, reqUserUpdate.toEntity());
 

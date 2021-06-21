@@ -6,13 +6,17 @@ import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
+import javax.validation.constraints.NotBlank;
+
 @Data
 @AllArgsConstructor
 @NoArgsConstructor
 @Builder
 public class ReqUserUpdate {
 
+    @NotBlank
     private String name;
+    @NotBlank
     private String password;
     private String website;
     private String bio;
