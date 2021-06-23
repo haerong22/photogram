@@ -1,7 +1,7 @@
 package com.photogram.web.controller.api;
 
-import com.photogram.core.domain.dto.CommonResponse;
-import com.photogram.core.domain.dto.user.ReqUserUpdate;
+import com.photogram.web.dto.CommonResponse;
+import com.photogram.web.dto.user.ReqUserUpdate;
 import com.photogram.core.domain.entity.user.User;
 import com.photogram.web.config.auth.PrincipalDetails;
 import com.photogram.web.exception.ex.CustomValidationApiException;

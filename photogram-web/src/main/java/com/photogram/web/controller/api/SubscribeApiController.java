@@ -1,6 +1,6 @@
 package com.photogram.web.controller.api;
 
-import com.photogram.core.domain.dto.CommonResponse;
+import com.photogram.web.dto.CommonResponse;
 import com.photogram.web.config.auth.PrincipalDetails;
 import com.photogram.web.service.SubscribeService;
 import lombok.RequiredArgsConstructor;

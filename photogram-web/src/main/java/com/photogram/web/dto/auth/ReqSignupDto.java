@@ -1,9 +1,8 @@
-package com.photogram.core.domain.dto.auth;
+package com.photogram.web.dto.auth;
 
 import com.photogram.core.domain.entity.user.User;
 import lombok.*;
 
-import javax.validation.constraints.Max;
 import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.Size;
 

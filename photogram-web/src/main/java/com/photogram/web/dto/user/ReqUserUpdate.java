@@ -1,4 +1,4 @@
-package com.photogram.core.domain.dto.user;
+package com.photogram.web.dto.user;
 
 import com.photogram.core.domain.entity.user.User;
 import lombok.AllArgsConstructor;

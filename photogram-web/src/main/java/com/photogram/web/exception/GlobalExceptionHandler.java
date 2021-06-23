@@ -1,6 +1,6 @@
 package com.photogram.web.exception;
 
-import com.photogram.core.domain.dto.CommonResponse;
+import com.photogram.web.dto.CommonResponse;
 import com.photogram.web.exception.ex.CustomApiException;
 import com.photogram.web.exception.ex.CustomValidationApiException;
 import com.photogram.web.exception.ex.CustomValidationException;

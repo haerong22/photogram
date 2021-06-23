@@ -1,4 +1,4 @@
-package com.photogram.core.domain.dto;
+package com.photogram.web.dto;
 
 import lombok.AllArgsConstructor;
 import lombok.Builder;

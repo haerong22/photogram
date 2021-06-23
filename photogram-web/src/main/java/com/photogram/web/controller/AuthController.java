@@ -1,6 +1,6 @@
 package com.photogram.web.controller;
 
-import com.photogram.core.domain.dto.auth.ReqSignupDto;
+import com.photogram.web.dto.auth.ReqSignupDto;
 import com.photogram.core.domain.entity.user.User;
 import com.photogram.web.service.AuthService;
 import lombok.RequiredArgsConstructor;
