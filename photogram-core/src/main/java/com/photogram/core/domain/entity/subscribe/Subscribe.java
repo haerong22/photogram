@@ -17,7 +17,7 @@ import java.time.LocalDateTime;
 public class Subscribe {
 
     @Id @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private long id;
+    private Long id;
 
     @ManyToOne
     private User fromUser;
