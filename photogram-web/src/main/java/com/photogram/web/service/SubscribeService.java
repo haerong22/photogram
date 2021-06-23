@@ -15,16 +15,16 @@ public class SubscribeService {
     private final SubscribeRepository subscribeRepository;
 
     @Transactional
-    public void subscribe(long fromUserId, long toUserId) {
+    public void subscribe(Long fromUserId, Long toUserId) {
         try {
             subscribeRepository.mSubscribe(fromUserId, toUserId);
         } catch (Exception e) {
-            throw new CustomApiException("구독 실");
+            throw new CustomApiException("subscribe fail");
         }
     }
 
     @Transactional
-    public void unSubscribe(long fromUserId, long toUserId) {
+    public void unSubscribe(Long fromUserId, Long toUserId) {
         subscribeRepository.mUnSubscribe(fromUserId, toUserId);
     }
 }
