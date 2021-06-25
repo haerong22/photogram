@@ -2,6 +2,7 @@ package com.photogram.web.exception;
 
 import com.photogram.web.dto.CommonResponse;
 import com.photogram.web.exception.ex.CustomApiException;
+import com.photogram.web.exception.ex.CustomException;
 import com.photogram.web.exception.ex.CustomValidationApiException;
 import com.photogram.web.exception.ex.CustomValidationException;
 import com.photogram.web.utils.Script;
@@ -48,6 +49,11 @@ public class GlobalExceptionHandler {
                         .code(-1)
                         .result(exception.getMessage())
                         .build());
+    }
+
+    @ExceptionHandler(CustomException.class)
+    public String customException(CustomException exception) {
+        return Script.back(exception.getMessage());
     }
 
     // ========================================================================

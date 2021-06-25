@@ -1,9 +1,12 @@
 package com.photogram.core.domain.entity.user;
 
+import com.photogram.core.domain.entity.image.Image;
 import lombok.*;
 
 import javax.persistence.*;
 import java.time.LocalDateTime;
+import java.util.ArrayList;
+import java.util.List;
 
 @Getter
 @Setter
@@ -37,6 +40,10 @@ public class User {
 
     private LocalDateTime createDate;
     private LocalDateTime updateDate;
+
+    @OneToMany(mappedBy = "user", fetch = FetchType.LAZY)
+    private List<Image> images = new ArrayList<>();
+
 
     @PrePersist
     public void createDate() {
