@@ -1,5 +1,6 @@
 package com.photogram.core.domain.entity.user;
 
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import com.photogram.core.domain.entity.image.Image;
 import lombok.*;
 
@@ -41,6 +42,7 @@ public class User {
     private LocalDateTime createDate;
     private LocalDateTime updateDate;
 
+    @JsonIgnoreProperties({"user"})
     @OneToMany(mappedBy = "user", fetch = FetchType.LAZY)
     private List<Image> images = new ArrayList<>();
 
