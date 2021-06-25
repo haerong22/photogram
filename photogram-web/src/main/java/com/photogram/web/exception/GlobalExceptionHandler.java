@@ -23,6 +23,9 @@ public class GlobalExceptionHandler {
 
     @ExceptionHandler(CustomValidationException.class)
     public String validationException(CustomValidationException exception) {
+        if (exception.getBindingResult()  == null) {
+            return Script.back(exception.getMessage());
+        }
         Map<String, String> errors = getErrors(exception.getBindingResult());
         return Script.back(errors.toString());
     }

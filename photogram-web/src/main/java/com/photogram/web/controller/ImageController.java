@@ -2,6 +2,7 @@ package com.photogram.web.controller;
 
 import com.photogram.web.config.auth.PrincipalDetails;
 import com.photogram.web.dto.image.ReqImageUpload;
+import com.photogram.web.exception.ex.CustomValidationException;
 import com.photogram.web.service.ImageService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.security.core.annotation.AuthenticationPrincipal;
@@ -33,8 +34,11 @@ public class ImageController {
     @PostMapping("/image")
     public String imageUpload(ReqImageUpload reqImageUpload,
                               @AuthenticationPrincipal PrincipalDetails principalDetails) {
-        imageService.uploadImage(reqImageUpload, principalDetails);
+        if (reqImageUpload.getFile().isEmpty()) {
+            throw new CustomValidationException("이미지가 첨부되지 않았습니다.", null);
+        }
 
+        imageService.uploadImage(reqImageUpload, principalDetails);
         return "redirect:/user/" + principalDetails.getUser().getId();
     }
 

@@ -22,7 +22,7 @@
                 
                 <!--사진업로드 Form-->
                 <form class="upload-form" action="/image" method="post" enctype="multipart/form-data">
-                    <input  type="file" name="file"  onchange="imageChoose(this)"/>
+                    <input  type="file" name="file"  onchange="imageChoose(this)" required/>
                     <div class="upload-img">
                         <img src="/images/person.jpeg" alt="" id="imageUploadPreview" />
                     </div>
