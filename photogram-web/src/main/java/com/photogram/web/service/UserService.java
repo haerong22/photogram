@@ -21,7 +21,6 @@ public class UserService {
     public User getUserProfile(Long userId) {
         User userEntity = userRepository.findById(userId)
                 .orElseThrow(() -> new CustomException("Not Found User"));
-        userEntity.getImages().get(0);
 
         return userEntity;
     }
