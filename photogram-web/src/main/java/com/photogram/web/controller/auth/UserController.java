@@ -1,4 +1,4 @@
-package com.photogram.web.controller;
+package com.photogram.web.controller.auth;
 
 import com.photogram.core.domain.entity.user.User;
 import com.photogram.web.config.auth.PrincipalDetails;

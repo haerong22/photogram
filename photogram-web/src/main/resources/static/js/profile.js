@@ -11,13 +11,32 @@
  */
 
 // (1) 유저 프로파일 페이지 구독하기, 구독취소
-function toggleSubscribe(obj) {
+function toggleSubscribe(toUserId, obj) {
 	if ($(obj).text() === "구독취소") {
-		$(obj).text("구독하기");
-		$(obj).toggleClass("blue");
+
+		$.ajax({
+			type: "DELETE",
+			url: "/api/subscribe/" + toUserId,
+			dataType: "json"
+		}).done(res => {
+			$(obj).text("구독하기");
+			$(obj).toggleClass("blue");
+		}).fail(err => {
+			alert("구독취소 실패");
+		});
+
 	} else {
-		$(obj).text("구독취소");
-		$(obj).toggleClass("blue");
+		$.ajax({
+			type: "POST",
+			url: "/api/subscribe/" + toUserId,
+			dataType: "json"
+		}).done(res => {
+			$(obj).text("구독취소");
+			$(obj).toggleClass("blue");
+		}).fail(err => {
+			alert("구독하기 실패");
+		});
+
 	}
 }
 
