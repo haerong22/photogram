@@ -2,6 +2,7 @@ package com.photogram.web.service;
 
 import com.photogram.core.domain.entity.image.Image;
 import com.photogram.core.domain.entity.user.User;
+import com.photogram.core.repository.SubscribeRepository;
 import com.photogram.core.repository.UserRepository;
 import com.photogram.web.dto.user.RespUserProfile;
 import com.photogram.web.exception.ex.CustomException;
@@ -15,6 +16,7 @@ import org.springframework.transaction.annotation.Transactional;
 @Service
 public class UserService {
     private final UserRepository userRepository;
+    private final SubscribeRepository subscribeRepository;
 
     private final BCryptPasswordEncoder bCryptPasswordEncoder;
 
@@ -23,10 +25,15 @@ public class UserService {
         User userEntity = userRepository.findById(pageUserId)
                 .orElseThrow(() -> new CustomException("Not Found User"));
 
+        int subscribeCount = subscribeRepository.mSubscribeCount(pageUserId);
+        int subscribeState = subscribeRepository.mSubscribeState(userId, pageUserId);
+
         return RespUserProfile.builder()
                 .user(userEntity)
                 .imageCount(userEntity.getImages().size())
                 .pageOwnerState(pageUserId.equals(userId))
+                .subScribeCount(subscribeCount)
+                .subScribeState(subscribeState == 1)
                 .build();
     }
 

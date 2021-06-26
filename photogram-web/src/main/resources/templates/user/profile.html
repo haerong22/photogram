@@ -34,7 +34,8 @@
 				<h2 th:text="${dto.user.name}">TherePrograming</h2>
 
 				<button th:if="${dto.pageOwnerState}" class="cta" onclick="location.href='/image/upload'">사진등록</button>
-				<button th:if="${!dto.pageOwnerState}" class="cta" onclick="toggleSubscribe(this)">구독하기</button>
+				<button th:if="${!dto.pageOwnerState && !dto.subScribeState}" class="cta" onclick="toggleSubscribe(this)">구독하기</button>
+				<button th:if="${!dto.pageOwnerState && dto.subScribeState}" class="cta blue" onclick="toggleSubscribe(this)">구독취소</button>
 				<button class="modi" onclick="popup('.modal-info')">
 					<i class="fas fa-cog"></i>
 				</button>
@@ -44,7 +45,7 @@
 				<ul>
 					<li><a href=""> 게시물<span th:text="${dto.imageCount}"></span>
 					</a></li>
-					<li><a href="javascript:subscribeInfoModalOpen();"> 구독정보<span>2</span>
+					<li><a href="javascript:subscribeInfoModalOpen();"> 구독정보<span th:text="${dto.subScribeCount}">2</span>
 					</a></li>
 				</ul>
 			</div>

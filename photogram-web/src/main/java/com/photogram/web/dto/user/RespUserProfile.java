@@ -14,5 +14,9 @@ public class RespUserProfile {
 
     private boolean pageOwnerState;
     private int imageCount;
+
+    private boolean subScribeState;
+    private int subScribeCount;
+
     private User user;
 }
