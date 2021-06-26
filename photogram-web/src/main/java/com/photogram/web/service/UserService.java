@@ -3,6 +3,7 @@ package com.photogram.web.service;
 import com.photogram.core.domain.entity.image.Image;
 import com.photogram.core.domain.entity.user.User;
 import com.photogram.core.repository.UserRepository;
+import com.photogram.web.dto.user.RespUserProfile;
 import com.photogram.web.exception.ex.CustomException;
 import com.photogram.web.exception.ex.CustomValidationApiException;
 import lombok.RequiredArgsConstructor;
@@ -18,11 +19,15 @@ public class UserService {
     private final BCryptPasswordEncoder bCryptPasswordEncoder;
 
     @Transactional
-    public User getUserProfile(Long userId) {
-        User userEntity = userRepository.findById(userId)
+    public RespUserProfile getUserProfile(Long pageUserId, Long userId) {
+        User userEntity = userRepository.findById(pageUserId)
                 .orElseThrow(() -> new CustomException("Not Found User"));
 
-        return userEntity;
+        return RespUserProfile.builder()
+                .user(userEntity)
+                .imageCount(userEntity.getImages().size())
+                .pageOwnerState(pageUserId.equals(userId))
+                .build();
     }
 
     @Transactional

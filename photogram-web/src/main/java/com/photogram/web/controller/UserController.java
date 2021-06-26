@@ -2,6 +2,7 @@ package com.photogram.web.controller;
 
 import com.photogram.core.domain.entity.user.User;
 import com.photogram.web.config.auth.PrincipalDetails;
+import com.photogram.web.dto.user.RespUserProfile;
 import com.photogram.web.service.UserService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.security.core.annotation.AuthenticationPrincipal;
@@ -16,12 +17,14 @@ public class UserController {
 
     private final UserService userService;
 
-    @GetMapping("/user/{id}")
-    public String profile(@PathVariable Long id, Model model) {
+    @GetMapping("/user/{pageUserId}")
+    public String profile(@PathVariable Long pageUserId,
+                          @AuthenticationPrincipal PrincipalDetails principalDetails,
+                          Model model) {
 
-        User userEntity = userService.getUserProfile(id);
+        RespUserProfile userProfile = userService.getUserProfile(pageUserId, principalDetails.getUser().getId());
 
-        model.addAttribute("user", userEntity);
+        model.addAttribute("dto", userProfile);
         return "user/profile";
     }
 
