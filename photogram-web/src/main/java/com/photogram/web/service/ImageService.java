@@ -7,13 +7,15 @@ import com.photogram.web.dto.image.ReqImageUpload;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Value;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 import java.nio.file.Files;
 import java.nio.file.Path;
 import java.nio.file.Paths;
-import java.util.List;
+
 import java.util.UUID;
 
 @Slf4j
@@ -27,8 +29,8 @@ public class ImageService {
     @Value("${file.path}")
     private String uploadDirectory;
 
-    public List<Image> getStoryList(Long principalId) {
-        List<Image> imageList = imageRepository.mStory(principalId);
+    public Page<Image> getStoryList(Long principalId, Pageable pageable) {
+        Page<Image> imageList = imageRepository.mStory(principalId, pageable);
         return imageList;
     }
 
