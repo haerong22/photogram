@@ -80,6 +80,9 @@ project(':photogram-web') {
         compileOnly 'org.springframework.boot:spring-boot-starter-web'
         compileOnly 'org.springframework.boot:spring-boot-starter-aop'
 
+        compileOnly group: 'org.qlrm', name: 'qlrm', version: '2.1.1'
+
+
         developmentOnly("org.springframework.boot:spring-boot-devtools")
 
         testCompileOnly 'org.springframework.security:spring-security-test'
