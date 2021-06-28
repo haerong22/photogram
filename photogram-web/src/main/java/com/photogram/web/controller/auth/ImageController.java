@@ -4,7 +4,6 @@ import com.photogram.web.config.auth.PrincipalDetails;
 import com.photogram.web.dto.image.ReqImageUpload;
 import com.photogram.web.exception.ex.CustomValidationException;
 import com.photogram.web.service.ImageService;
-import com.sun.org.apache.xpath.internal.operations.Mod;
 import lombok.RequiredArgsConstructor;
 import org.springframework.security.core.annotation.AuthenticationPrincipal;
 import org.springframework.stereotype.Controller;
