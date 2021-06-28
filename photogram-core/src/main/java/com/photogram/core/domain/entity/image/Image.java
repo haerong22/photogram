@@ -2,6 +2,7 @@ package com.photogram.core.domain.entity.image;
 
 import javax.persistence.*;
 
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import com.photogram.core.domain.entity.user.User;
 import lombok.*;
 
@@ -23,6 +24,7 @@ public class Image {
 
     private String postImageUrl;
 
+    @JsonIgnoreProperties({"images"})
     @ManyToOne
     @JoinColumn(name = "user_id")
     private User user;
