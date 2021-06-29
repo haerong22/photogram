@@ -1,12 +1,14 @@
 package com.photogram.core.domain.entity.likes;
 
-import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import com.photogram.core.domain.entity.image.Image;
 import com.photogram.core.domain.entity.user.User;
+import lombok.Getter;
+import lombok.Setter;
 
 import javax.persistence.*;
 import java.time.LocalDateTime;
 
+@Getter @Setter
 @Entity
 @Table(
         uniqueConstraints = {

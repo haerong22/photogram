@@ -31,6 +31,14 @@ public class ImageService {
 
     public Page<Image> getStoryList(Long principalId, Pageable pageable) {
         Page<Image> imageList = imageRepository.mStory(principalId, pageable);
+
+        imageList.forEach(img -> {
+            img.getLikes().forEach(like -> {
+                if (like.getUser().getId().equals(principalId)) {
+                    img.setLikeState(true);
+                }
+            });
+        });
         return imageList;
     }
 
