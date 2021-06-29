@@ -16,6 +16,7 @@ import java.nio.file.Files;
 import java.nio.file.Path;
 import java.nio.file.Paths;
 
+import java.util.List;
 import java.util.UUID;
 
 @Slf4j
@@ -60,5 +61,9 @@ public class ImageService {
         Image imageEntity = imageRepository.save(image);
 
         log.info("saved image entity ====> {}", imageEntity);
+    }
+
+    public List<Image> getPopularImageList() {
+        return imageRepository.mPopular();
     }
 }

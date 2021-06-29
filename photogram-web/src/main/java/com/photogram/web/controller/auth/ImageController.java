@@ -1,5 +1,6 @@
 package com.photogram.web.controller.auth;
 
+import com.photogram.core.domain.entity.image.Image;
 import com.photogram.web.config.auth.PrincipalDetails;
 import com.photogram.web.dto.image.ReqImageUpload;
 import com.photogram.web.exception.ex.CustomValidationException;
@@ -10,6 +11,8 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
+
+import java.util.List;
 
 @RequiredArgsConstructor
 @Controller
@@ -24,6 +27,9 @@ public class ImageController {
 
     @GetMapping("/image/popular")
     public String popular(Model model) {
+
+        List<Image> images = imageService.getPopularImageList();
+        model.addAttribute("images", images);
         return "image/popular";
     }
 
