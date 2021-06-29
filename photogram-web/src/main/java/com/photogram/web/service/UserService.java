@@ -28,6 +28,10 @@ public class UserService {
         int subscribeCount = subscribeRepository.mSubscribeCount(pageUserId);
         int subscribeState = subscribeRepository.mSubscribeState(userId, pageUserId);
 
+        userEntity.getImages().forEach(image -> {
+            image.setLikeCount(image.getLikes().size());
+        });
+
         return RespUserProfile.builder()
                 .user(userEntity)
                 .imageCount(userEntity.getImages().size())
