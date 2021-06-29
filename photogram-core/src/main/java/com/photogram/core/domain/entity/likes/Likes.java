@@ -1,0 +1,39 @@
+package com.photogram.core.domain.entity.likes;
+
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+import com.photogram.core.domain.entity.image.Image;
+import com.photogram.core.domain.entity.user.User;
+
+import javax.persistence.*;
+import java.time.LocalDateTime;
+
+@Entity
+@Table(
+        uniqueConstraints = {
+                @UniqueConstraint(
+                        name = "likes_uk",
+                        columnNames = {"image_id", "user_id"}
+                )
+        }
+)
+public class Likes {
+
+    @Id @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private Long id;
+
+    @JoinColumn(name = "image_id")
+    @ManyToOne
+    private Image image;
+
+    @JoinColumn(name = "user_id")
+    @ManyToOne
+    private User user;
+
+    private LocalDateTime createDate;
+    private LocalDateTime updateDate;
+
+    @PrePersist
+    public void createDate() {
+        this.createDate = LocalDateTime.now();
+    }
+}
