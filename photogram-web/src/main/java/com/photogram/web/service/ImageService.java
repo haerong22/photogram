@@ -33,6 +33,7 @@ public class ImageService {
         Page<Image> imageList = imageRepository.mStory(principalId, pageable);
 
         imageList.forEach(img -> {
+            img.setLikeCount(img.getLikes().size());
             img.getLikes().forEach(like -> {
                 if (like.getUser().getId().equals(principalId)) {
                     img.setLikeState(true);
