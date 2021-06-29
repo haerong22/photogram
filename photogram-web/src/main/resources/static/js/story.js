@@ -8,9 +8,11 @@
  */
 
 // (1) 스토리 로드하기
+let page = 0;
+
 function storyLoad() {
 	$.ajax({
-		url: `/api/images`,
+		url: `/api/images?page=${page}`,
 		dataType: "json"
 	}).done(res => {
 		console.log(res.data);
@@ -81,7 +83,11 @@ function getStoryItem(image) {
 
 // (2) 스토리 스크롤 페이징하기
 $(window).scroll(() => {
-
+	let checkNum = $(window).scrollTop() - ( $(document).height() - $(window).height() );
+	if (checkNum < 1 && checkNum > -1) {
+		page++;
+		storyLoad();
+	}
 });
 
 
