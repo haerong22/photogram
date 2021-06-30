@@ -80,8 +80,11 @@ function getSubscribeModalItem(user) {
 	return item;
 }
 
-// (3) 유저 프로파일 사진 변경 (완)
-function profileImageUpload() {
+// (3) 유저 프로파일 사진 변경
+function profileImageUpload(pageUserId, principalId) {
+	if (pageUserId != principalId) {
+		return;
+	}
 	$("#userProfileImageInput").click();
 
 	$("#userProfileImageInput").on("change", (e) => {
@@ -92,18 +95,38 @@ function profileImageUpload() {
 			return;
 		}
 
-		// 사진 전송 성공시 이미지 변경
-		let reader = new FileReader();
-		reader.onload = (e) => {
-			$("#userProfileImage").attr("src", e.target.result);
-		}
-		reader.readAsDataURL(f); // 이 코드 실행시 reader.onload 실행됨.
+		// 서버에 이미지 전송
+		let profileImageForm = $("#userProfileImageForm")[0];
+
+		let formData = new FormData(profileImageForm);
+
+		$.ajax({
+			type: "PUT",
+			url: `/api/user/${principalId}/profileImageUrl`,
+			data: formData,
+			contentType: false,
+			processData: false,
+			enctype: "multipart/form-data",
+			dataType: "json"
+		}).done(res => {
+			// 사진 전송 성공시 이미지 변경
+			let reader = new FileReader();
+			reader.onload = (e) => {
+				$("#userProfileImage").attr("src", e.target.result);
+			}
+			reader.readAsDataURL(f); // 이 코드 실행시 reader.onload 실행됨.
+		}).fail(err => {
+			console.log("fail => ", err)
+		});
 	});
 }
 
 
 // (4) 사용자 정보 메뉴 열기 닫기
-function popup(obj) {
+function popup(obj, pageUserId, principalId) {
+	if (pageUserId != principalId) {
+		return;
+	}
 	$(obj).css("display", "flex");
 }
 

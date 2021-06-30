@@ -16,6 +16,7 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.multipart.MultipartFile;
 
 import javax.validation.Valid;
 import java.util.List;
@@ -26,6 +27,19 @@ public class UserApiController {
 
     private final UserService userService;
     private final SubscribeService subscribeService;
+
+    @PutMapping("/api/user/{principalId}/profileImageUrl")
+    public ResponseEntity<?> updateProfileImageUrl(@PathVariable Long principalId,
+                                                   MultipartFile profileImageFile,
+                                                   @AuthenticationPrincipal PrincipalDetails principalDetails) {
+        User userEntity = userService.updateProfileImageUrl(principalId, profileImageFile);
+        principalDetails.setUser(userEntity);
+
+        return ResponseEntity.ok().body(CommonResponse.builder()
+                .code(1)
+                .result("이미지 변경 완료")
+                .build());
+    }
 
     @GetMapping("/api/user/{pageUserId}/subscribe")
     public ResponseEntity<?> getSubscribeList(@PathVariable Long pageUserId,

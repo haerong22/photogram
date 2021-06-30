@@ -16,13 +16,13 @@
 		<!--유저이미지-->
 		<div class="profile-left">
 			<div class="profile-img-wrap story-border"
-				onclick="popup('.modal-image')">
+				th:onclick="|javascript:popup('.modal-image', ${dto.user.id}, ${loginUserId})|">
 				<form id="userProfileImageForm">
 					<input type="file" name="profileImageFile" style="display: none;"
 						id="userProfileImageInput" />
 				</form>
 
-				<img class="profile-image" src="#"
+				<img class="profile-image" th:src="@{/upload/{image}(image=${dto.user.profileImageUrl})}"
 					onerror="this.src='/images/person.jpeg'" id="userProfileImage" />
 			</div>
 		</div>
@@ -102,7 +102,7 @@
 <div class="modal-image" onclick="modalImage()">
 	<div class="modal">
 		<p>프로필 사진 바꾸기</p>
-		<button onclick="profileImageUpload()">사진 업로드</button>
+		<button th:onclick="|javascript:profileImageUpload(${dto.user.id}, ${loginUserId})|">사진 업로드</button>
 		<button onclick="closePopup('.modal-image')">취소</button>
 	</div>
 </div>
