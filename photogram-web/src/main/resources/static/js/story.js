@@ -7,6 +7,7 @@
 	(5) 댓글삭제
  */
 
+const principalId = $("#principalId").val();
 // (1) 스토리 로드하기
 let page = 0;
 
@@ -70,17 +71,19 @@ function getStoryItem(image) {
 							<p>
 								<b>${comment.user.username} :</b> ${comment.content}
 							</p>
-			
-							<button>
+					`;
+					if(Number(principalId) === comment.user.id) {
+						item += `
+							<button onclick="deleteComment(${comment.id})">
 								<i class="fas fa-times"></i>
 							</button>
-			
+						`;
+					}
+	item += `
 						</div>
-					`;
+	`;
 				});
 	item += `
-						
-				
 				</div>
 		
 				<div class="sl__item__input">
@@ -174,7 +177,7 @@ function addComment(imageId) {
 			      <b>${comment.user.username} :</b>
 			      ${comment.content}
 			    </p>
-			    <button><i class="fas fa-times"></i></button>
+			    <button onclick="deleteComment(${comment.id})"><i class="fas fa-times"></i></button>
 			  </div>
 		`;
 		commentList.prepend(content);
@@ -182,13 +185,19 @@ function addComment(imageId) {
 		console.log("fail => ", err);
 	});
 
-
 	commentInput.val("");
 }
 
 // (5) 댓글 삭제
-function deleteComment() {
-
+function deleteComment(commentId) {
+	$.ajax({
+		type: "DELETE",
+		url: `/api/comment/${commentId}`
+	}).done(res => {
+		$(`#storyCommentItem-${commentId}`).remove();
+	}).fail(err => {
+		console.log("fail ==> ", err);
+	});
 }
 
 
