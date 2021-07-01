@@ -4,8 +4,7 @@ import com.photogram.core.domain.entity.comment.Comment;
 import com.photogram.web.config.auth.PrincipalDetails;
 import com.photogram.web.dto.CommonResponse;
 import com.photogram.web.dto.comment.ReqComment;
-import com.photogram.web.exception.ex.CustomApiException;
-import com.photogram.web.exception.ex.CustomValidationApiException;
+import com.photogram.web.handler.ex.CustomApiException;
 import com.photogram.web.service.CommentService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.HttpStatus;
@@ -26,10 +25,6 @@ public class CommentApiController {
     public ResponseEntity<?> createComment(@Valid @RequestBody ReqComment reqComment,
                                            BindingResult bindingResult,
                                            @AuthenticationPrincipal PrincipalDetails principalDetails) {
-        if (bindingResult.hasFieldErrors()) {
-            throw new CustomValidationApiException("유효성 검사 실패", bindingResult);
-        }
-
         Comment comment = commentService.saveComment(reqComment.getContent(), reqComment.getImageId(), principalDetails.getUser().getId());
         return new ResponseEntity<>(CommonResponse.builder()
                 .code(1)

@@ -29,6 +29,18 @@ spring:
     prefix: classpath:/templates/
     suffix: .html
 
+  security:
+    oauth2:
+      client:
+        registration:
+          facebook:
+            client-id: 340840187451921
+            client-secret: 995897862ab58dee141b8647c188ce90
+            scope:
+            - public_profile
+            - email
+
+
 file:
   path: /Users/bobby/Desktop/kim/study/upload/
 #  path: C:\Users\Woojin\Desktop\study\photogram-image\

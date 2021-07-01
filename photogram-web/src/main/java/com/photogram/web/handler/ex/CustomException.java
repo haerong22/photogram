@@ -1,4 +1,4 @@
-package com.photogram.web.exception.ex;
+package com.photogram.web.handler.ex;
 
 public class CustomException extends RuntimeException{
 

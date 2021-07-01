@@ -5,7 +5,7 @@ import com.photogram.core.domain.entity.image.Image;
 import com.photogram.core.domain.entity.user.User;
 import com.photogram.core.repository.CommentRepository;
 import com.photogram.core.repository.UserRepository;
-import com.photogram.web.exception.ex.CustomApiException;
+import com.photogram.web.handler.ex.CustomApiException;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;

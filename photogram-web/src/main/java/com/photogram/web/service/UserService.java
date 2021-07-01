@@ -1,13 +1,12 @@
 package com.photogram.web.service;
 
-import com.photogram.core.domain.entity.image.Image;
 import com.photogram.core.domain.entity.user.User;
 import com.photogram.core.repository.SubscribeRepository;
 import com.photogram.core.repository.UserRepository;
 import com.photogram.web.dto.user.RespUserProfile;
-import com.photogram.web.exception.ex.CustomApiException;
-import com.photogram.web.exception.ex.CustomException;
-import com.photogram.web.exception.ex.CustomValidationApiException;
+import com.photogram.web.handler.ex.CustomApiException;
+import com.photogram.web.handler.ex.CustomException;
+import com.photogram.web.handler.ex.CustomValidationApiException;
 import lombok.RequiredArgsConstructor;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;

@@ -1,4 +1,4 @@
-package com.photogram.web.exception.ex;
+package com.photogram.web.handler.ex;
 
 import org.springframework.validation.BindingResult;
 

@@ -5,7 +5,7 @@ import com.photogram.web.dto.subscribe.RespSubscribe;
 import com.photogram.web.dto.user.ReqUserUpdate;
 import com.photogram.core.domain.entity.user.User;
 import com.photogram.web.config.auth.PrincipalDetails;
-import com.photogram.web.exception.ex.CustomValidationApiException;
+import com.photogram.web.handler.ex.CustomValidationApiException;
 import com.photogram.web.service.SubscribeService;
 import com.photogram.web.service.UserService;
 import lombok.RequiredArgsConstructor;
@@ -60,9 +60,6 @@ public class UserApiController {
                                     @Valid ReqUserUpdate reqUserUpdate,
                                     BindingResult bindingResult,
                                     @AuthenticationPrincipal PrincipalDetails principalDetails) {
-        if (bindingResult.hasFieldErrors()) {
-            throw new CustomValidationApiException("유효성 검사 실패", bindingResult);
-        }
 
         User userEntity = userService.updateUser(id, reqUserUpdate.toEntity());
 

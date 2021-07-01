@@ -1,10 +1,10 @@
-package com.photogram.web.exception;
+package com.photogram.web.handler;
 
 import com.photogram.web.dto.CommonResponse;
-import com.photogram.web.exception.ex.CustomApiException;
-import com.photogram.web.exception.ex.CustomException;
-import com.photogram.web.exception.ex.CustomValidationApiException;
-import com.photogram.web.exception.ex.CustomValidationException;
+import com.photogram.web.handler.ex.CustomApiException;
+import com.photogram.web.handler.ex.CustomException;
+import com.photogram.web.handler.ex.CustomValidationApiException;
+import com.photogram.web.handler.ex.CustomValidationException;
 import com.photogram.web.utils.Script;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.http.ResponseEntity;

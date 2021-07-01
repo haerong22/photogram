@@ -3,7 +3,7 @@ package com.photogram.web.controller.auth;
 import com.photogram.core.domain.entity.image.Image;
 import com.photogram.web.config.auth.PrincipalDetails;
 import com.photogram.web.dto.image.ReqImageUpload;
-import com.photogram.web.exception.ex.CustomValidationException;
+import com.photogram.web.handler.ex.CustomValidationException;
 import com.photogram.web.service.ImageService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.security.core.annotation.AuthenticationPrincipal;

@@ -2,7 +2,7 @@ package com.photogram.web.service;
 
 import com.photogram.core.repository.SubscribeRepository;
 import com.photogram.web.dto.subscribe.RespSubscribe;
-import com.photogram.web.exception.ex.CustomApiException;
+import com.photogram.web.handler.ex.CustomApiException;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.qlrm.mapper.JpaResultMapper;

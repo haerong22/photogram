@@ -11,7 +11,7 @@ import java.util.Arrays;
 
 @Aspect
 @Component
-public class PrincipalDetailsAspect {
+public class PrincipalDetailsAdvice {
 
     @Around("execution(* com.photogram.web.controller.auth.*Controller.*(..))")
     public Object principalDetails(ProceedingJoinPoint pjp) throws Throwable {

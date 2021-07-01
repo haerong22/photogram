@@ -6,6 +6,7 @@ import com.photogram.web.service.AuthService;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Controller;
+import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 
@@ -29,7 +30,7 @@ public class AuthController {
     }
 
     @PostMapping("/auth/signup")
-    public String signup(@Valid ReqSignupDto reqSignupDto) {
+    public String signup(@Valid ReqSignupDto reqSignupDto, BindingResult bindingResult) {
         log.info("ReqSignupDto ==> {}", reqSignupDto);
         User userEntity = authService.createUser(reqSignupDto);
         return "auth/signin";
