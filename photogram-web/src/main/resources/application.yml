@@ -7,7 +7,7 @@ spring:
 
   datasource:
     driver-class-name: net.sf.log4jdbc.sql.jdbcapi.DriverSpy
-    url: jdbc:log4jdbc:mariadb://localhost:13306/photogram
+    url: jdbc:log4jdbc:mariadb://localhost:3306/photogram
     username: root
     password: 1234
 
@@ -30,5 +30,5 @@ spring:
     suffix: .html
 
 file:
-  #path: /Users/bobby/Desktop/kim/study/upload/
-  path: C:\Users\Woojin\Desktop\study\photogram-image\
+  path: /Users/bobby/Desktop/kim/study/upload/
+#  path: C:\Users\Woojin\Desktop\study\photogram-image\

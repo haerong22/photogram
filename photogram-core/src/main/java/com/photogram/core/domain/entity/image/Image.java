@@ -4,6 +4,7 @@ import javax.persistence.*;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+import com.photogram.core.domain.entity.comment.Comment;
 import com.photogram.core.domain.entity.likes.Likes;
 import com.photogram.core.domain.entity.user.User;
 import lombok.*;
@@ -36,6 +37,12 @@ public class Image {
     @JsonIgnore
     @OneToMany(mappedBy = "image")
     private List<Likes> likes = new ArrayList<>();
+
+
+    @OrderBy("id DESC")
+    @JsonIgnoreProperties({"image"})
+    @OneToMany(mappedBy = "image")
+    private List<Comment> comments = new ArrayList<>();
 
     private LocalDateTime createDate;
     private LocalDateTime updateDate;

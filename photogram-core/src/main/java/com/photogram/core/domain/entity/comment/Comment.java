@@ -1,5 +1,6 @@
 package com.photogram.core.domain.entity.comment;
 
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import com.photogram.core.domain.entity.image.Image;
 import com.photogram.core.domain.entity.user.User;
 import lombok.*;
@@ -23,6 +24,7 @@ public class Comment {
     @Column(length = 100, nullable = false)
     private String content;
 
+    @JsonIgnoreProperties({"images"})
     @JoinColumn(name = "user_id")
     @ManyToOne
     private User user;
